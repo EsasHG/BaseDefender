@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmc3m31ge3tur"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rri80"]
+
+[node name="SceneRoot" type="Node2D"]
+
+[node name="GroundSprite" type="Sprite2D" parent="."]
+modulate = Color(0.505882, 0.321569, 0.247059, 1)
+position = Vector2(559, 333)
+scale = Vector2(-1266.08, 699.224)
+texture = SubResource("CanvasTexture_rri80")
