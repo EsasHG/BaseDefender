@@ -23,7 +23,6 @@ public partial class Spawner : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta){
 		waveTimer += delta;
-
 		while (waveTimer >= waveDelay){
 			spawnWave();
 			waveTimer -= waveDelay;
@@ -38,6 +37,7 @@ public partial class Spawner : Node2D
 
 	void spawnEnemy(){
 		Node2D newEnemy = (Node2D)enemy.Instantiate();
+		GetParent().GetParent().AddChild(newEnemy);
 		newEnemy.Position = new Vector2(rand.RandfRange(-500, 500), rand.RandfRange(-500, 500));
 	}
 	

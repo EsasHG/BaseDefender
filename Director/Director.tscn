@@ -9,4 +9,4 @@
 script = ExtResource("1_opa14")
 enemy = ExtResource("2_28yqw")
 perWaveCount = 5
-waveDelay = 5.0
+waveDelay = 1.0
