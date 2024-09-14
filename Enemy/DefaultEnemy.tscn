@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://ct1kgcs7jkvqt"]
+[gd_scene load_steps=4 format=3 uid="uid://ct1kgcs7jkvqt"]
 
+[ext_resource type="Script" path="res://Enemy/EnemyScript.cs" id="1_14g38"]
 [ext_resource type="Texture2D" uid="uid://bnio3353ifccl" path="res://Enemy/circle.png" id="1_ucg4y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iilgy"]
 
 [node name="DefaultEnemy" type="CharacterBody2D"]
+script = ExtResource("1_14g38")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_iilgy")
@@ -14,3 +16,4 @@ metadata/_edit_lock_ = true
 position = Vector2(4.76837e-07, 6.85453e-07)
 scale = Vector2(0.0390625, 0.0390625)
 texture = ExtResource("1_ucg4y")
+script = ExtResource("1_14g38")

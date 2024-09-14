@@ -1,23 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7fkkai1yikml"]
+[gd_scene load_steps=6 format=3 uid="uid://c7fkkai1yikml"]
 
 [ext_resource type="Texture2D" uid="uid://cnuckdsj7byyf" path="res://Grasstest.png" id="1_l51lm"]
 [ext_resource type="Script" path="res://Base/Base.cs" id="2_havmh"]
+[ext_resource type="Texture2D" uid="uid://bnio3353ifccl" path="res://Enemy/circle.png" id="3_mxghr"]
+[ext_resource type="PackedScene" uid="uid://ct1kgcs7jkvqt" path="res://Enemy/DefaultEnemy.tscn" id="4_hpi6k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uq2oc"]
 radius = 50.0
-
-[sub_resource type="Gradient" id="Gradient_b7xbn"]
-offsets = PackedFloat32Array(0, 0.301887, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.508788, 0.184543, 0, 1, 0, 1, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2kfc3"]
-frequency = 0.0231
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_crt60"]
-width = 100
-height = 100
-color_ramp = SubResource("Gradient_b7xbn")
-noise = SubResource("FastNoiseLite_2kfc3")
 
 [node name="World" type="Node2D"]
 
@@ -33,5 +22,9 @@ shape = SubResource("CircleShape2D_uq2oc")
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Base"]
-texture = SubResource("NoiseTexture2D_crt60")
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("3_mxghr")
 metadata/_edit_lock_ = true
+
+[node name="DefaultEnemy" parent="." instance=ExtResource("4_hpi6k")]
+position = Vector2(606, 595)
