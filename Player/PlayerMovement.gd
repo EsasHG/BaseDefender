@@ -64,5 +64,6 @@ func _attack():
 	spriteTween.tween_property(dmgSprite, "modulate", Color.TRANSPARENT,0.2)
 	spriteTween.tween_callback(func(): 
 		ATTACKING = false	
-		dmgSprite.queue_free
-	).set_delay(0.3)
+		dmgSprite.queue_free()
+		return
+	)
