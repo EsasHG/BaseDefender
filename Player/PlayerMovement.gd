@@ -5,14 +5,14 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 var ATTACKING : bool = false
-
 var damageEffect = preload("res://Player/AttackSprite.tscn")
 
+	
 func _physics_process(delta):
-	# Add the g$"."ravity.
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+		
 	# Handle jump.
 	# if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 	#	velocity.y = JUMP_VELOCITY
@@ -35,7 +35,9 @@ func _physics_process(delta):
 	
 	if !ATTACKING and Input.is_action_pressed("Attack"):
 		_attack()
-	
+		
+	var dmgVec = get_local_mouse_position().normalized()*ATTACK_DISTANCE
+	$Spear.rotation = dmgVec.angle()
 	move_and_slide()
 
 func _attack():
@@ -67,3 +69,10 @@ func _attack():
 		dmgSprite.queue_free()
 		return
 	)
+	
+	var spearTween = get_tree().create_tween()
+	spearTween.set_ease(Tween.EASE_OUT)
+	spearTween.tween_property($Spear,"position", dmgVec, 0.04)
+	spearTween.set_ease(Tween.EASE_IN)
+	spearTween.tween_property($Spear, "position", Vector2(0,0),0.2)
+	
