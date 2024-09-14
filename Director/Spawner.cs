@@ -11,6 +11,12 @@ public partial class Spawner : Node2D
 	[Export]
 	float waveDelay;
 
+	[Export]
+	float minDist;
+	[Export]
+	float maxDist;
+	
+
 	double waveTimer;
 
 	RandomNumberGenerator rand;
@@ -38,7 +44,10 @@ public partial class Spawner : Node2D
 	void spawnEnemy(){
 		Node2D newEnemy = (Node2D)enemy.Instantiate();
 		GetParent().GetParent().AddChild(newEnemy);
-		newEnemy.Position = new Vector2(rand.RandfRange(-500, 500), rand.RandfRange(-500, 500));
+		float posX = rand.RandfRange(minDist, maxDist) * Mathf.Sign(rand.RandfRange(-1, 1));
+		float posY = rand.RandfRange(-maxDist, maxDist);
+		
+		newEnemy.Position = rand.Randf() > 0.5f ? new Vector2(posX, posY) : new Vector2(posY, posX);
 	}
 	
 }
