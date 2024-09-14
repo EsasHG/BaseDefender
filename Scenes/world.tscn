@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7fkkai1yikml"]
+[gd_scene load_steps=8 format=3 uid="uid://bgnj3lukolywt"]
 
 [ext_resource type="Texture2D" uid="uid://cnuckdsj7byyf" path="res://Grasstest.png" id="1_l51lm"]
 [ext_resource type="Script" path="res://Base/Base.cs" id="2_havmh"]
+[ext_resource type="PackedScene" uid="uid://dxnjb1qxw01gl" path="res://Player/Player.tscn" id="3_i40dp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uq2oc"]
 radius = 50.0
@@ -35,3 +36,5 @@ metadata/_edit_lock_ = true
 [node name="Sprite2D" type="Sprite2D" parent="Base"]
 texture = SubResource("NoiseTexture2D_crt60")
 metadata/_edit_lock_ = true
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_i40dp")]
