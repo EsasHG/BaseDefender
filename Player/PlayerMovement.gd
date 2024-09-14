@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-
-
-const ATTACK_DISTANCE = 20.0
+const ATTACK_DISTANCE = 30.0
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+var ATTACKING : bool = false
+
+var damageEffect = preload("res://Player/AttackSprite.tscn")
 
 func _physics_process(delta):
 	# Add the g$"."ravity.
@@ -32,18 +33,36 @@ func _physics_process(delta):
 
 	velocity = velocity.normalized()  * SPEED
 	
-	if Input.is_action_pressed("Attack"):
+	if !ATTACKING and Input.is_action_pressed("Attack"):
 		_attack()
-	if Input.is_action_just_released("Attack"):
-		$DamageSprite.visible = false
 	
 	move_and_slide()
 
 func _attack():
-	$DamageSprite.visible = true
+
+	ATTACKING = true
+#	var dmgSprite = Sprite2D.new()
+#	dmgSprite.texture =CanvasTexture.new()
+#	dmgSprite.scale.x  = 40
+#	dmgSprite.scale.y  = 30
+	var dmgSprite = damageEffect.instantiate()
+	
+	add_child(dmgSprite)
+#	get_tree().root.add_child(dmgSprite)
+	dmgSprite.modulate = Color.TRANSPARENT
+	dmgSprite.visible = true
+	
 	var dmgVec = get_local_mouse_position().normalized()*ATTACK_DISTANCE
 	
-	$DamageSprite.position = dmgVec
-	$DamageSprite.rotation = dmgVec.angle()
-	#$DamageSprite.rotate(dmgVec.))
-	print_debug( get_local_mouse_position().normalized())
+	dmgSprite.position = dmgVec
+	dmgSprite.rotation = dmgVec.angle()
+	
+	var spriteTween = get_tree().create_tween()
+	spriteTween.set_ease(Tween.EASE_OUT)
+	spriteTween.tween_property(dmgSprite,"modulate", Color.DARK_GRAY, 0.04)
+	spriteTween.set_ease(Tween.EASE_IN)
+	spriteTween.tween_property(dmgSprite, "modulate", Color.TRANSPARENT,0.2)
+	spriteTween.tween_callback(func(): 
+		ATTACKING = false	
+		dmgSprite.queue_free
+	).set_delay(0.3)
