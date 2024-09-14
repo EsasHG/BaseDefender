@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class EnemyScript : CharacterBody2D
+public partial class EnemyScript : CharacterBody2D, IEnemy
 {
 	[Export]
 	float Speed = 300.0f;
@@ -28,7 +28,7 @@ public partial class EnemyScript : CharacterBody2D
 		
 	}
 
-	public void hit(int amount = 1){
+	public void damage(int amount = 1){
 		health -= amount;
 
 		if (health <= 0){
