@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7fkkai1yikml"]
+[gd_scene load_steps=5 format=3 uid="uid://bgnj3lukolywt"]
 
 [ext_resource type="Texture2D" uid="uid://cnuckdsj7byyf" path="res://Grasstest.png" id="1_l51lm"]
 [ext_resource type="PackedScene" uid="uid://b8bqna8580cec" path="res://Base/base.tscn" id="2_bjwee"]
