@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://chn8v7haexx43"]
+
+[ext_resource type="Script" path="res://Turret/Bullet.gd" id="1_fjnnc"]
+[ext_resource type="Texture2D" uid="uid://bnio3353ifccl" path="res://Enemy/circle.png" id="2_tfm8o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hufle"]
+radius = 3.0
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_fjnnc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hufle")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.952941, 0.584314, 0.258824, 1)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_tfm8o")
