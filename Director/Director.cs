@@ -3,7 +3,7 @@ using System;
 
 public partial class Director : Node2D
 {
-	public static Director director;
+	public static Director instance;
 	
 	[Export]
 	public Spawner spawner;
@@ -11,7 +11,7 @@ public partial class Director : Node2D
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
-		director = this;
+		instance = this;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
