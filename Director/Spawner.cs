@@ -5,41 +5,48 @@ public partial class Spawner : Node2D
 {
 	[Export]
 	PackedScene enemy;
-
-	[Export]
-	int perWaveCount;
-	[Export]
-	float waveDelay;
-
 	[Export]
 	float minDist;
 	[Export]
 	float maxDist;
 	
 
-	double waveTimer;
+	
 
+	float spawnDelay;
+	double spawnTimer;
+	int spawnCounter = 0;
+	
 	RandomNumberGenerator rand;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
 		rand = new RandomNumberGenerator();
+		SetProcess(false);
 	}
 
+	public void startWave(int count, float spawnRate){
+		spawnCounter = count;
+		spawnDelay = 1 / spawnRate;
+		spawnTimer = 0;
+		SetProcess(true);
+	}
+	
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta){
-		waveTimer += delta;
-		while (waveTimer >= waveDelay){
-			spawnWave();
-			waveTimer -= waveDelay;
-		}
-	}
-
-	void spawnWave(){
-		for (int i = 0; i < perWaveCount; i++){
+		spawnTimer += delta;
+		while (spawnTimer >= spawnDelay){
 			spawnEnemy();
+			spawnTimer -= spawnDelay;
+			spawnCounter--;
+			GD.Print(spawnCounter);
+			if (spawnCounter <= 0){
+				SetProcess(false);
+				return;
+			}
 		}
 	}
+	
 
 	void spawnEnemy(){
 		Node2D newEnemy = (Node2D)enemy.Instantiate();

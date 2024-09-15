@@ -11,7 +11,5 @@ spawner = NodePath("Spawner")
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("1_opa14")
 enemy = ExtResource("2_28yqw")
-perWaveCount = 5
-waveDelay = 0.3
 minDist = 500.0
 maxDist = 600.0
