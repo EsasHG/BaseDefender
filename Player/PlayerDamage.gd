@@ -1,7 +1,7 @@
 extends Area2D
 
 
-var enemy = preload("res://Enemy/EnemyScript.cs")
+#var enemy = preload("res://Enemy/EnemyScript.cs")
 
 var collided = []
 # Called when the node enters the scene tree for the first time.
@@ -14,4 +14,3 @@ func _process(delta: float) -> void:
 		if body.is_in_group("Enemy") and not collided.has(body.get_instance_id()):
 			collided.append(body.get_instance_id())
 			body.damage(1)
-			print("Hit Enemy")
