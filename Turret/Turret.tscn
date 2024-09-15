@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvjopq8vxohdy"]
+
+[ext_resource type="Script" path="res://Turret/turret.gd" id="1_wkc6r"]
+[ext_resource type="Texture2D" uid="uid://bnio3353ifccl" path="res://Enemy/circle.png" id="2_2ukpg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hufle"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s7v5f"]
+
+[node name="Turret" type="StaticBody2D"]
+script = ExtResource("1_wkc6r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hufle")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.698039, 1, 0.662745, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_2ukpg")
+
+[node name="Barrel" type="Sprite2D" parent="."]
+scale = Vector2(15, 5)
+texture = SubResource("CanvasTexture_s7v5f")
+offset = Vector2(0.46, 0)
