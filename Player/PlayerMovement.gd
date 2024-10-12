@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -400.0
 var ATTACKING : bool = false
 var damageEffect = preload("res://Player/AttackSprite.tscn")
 
-	
+
 func _physics_process(delta):
 	
 	if not is_on_floor():
@@ -41,6 +41,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _attack():
+
+	Director.spawner.spawnEnemy()
 
 	ATTACKING = true
 #	var dmgSprite = Sprite2D.new()
