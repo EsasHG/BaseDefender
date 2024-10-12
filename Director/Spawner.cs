@@ -39,7 +39,6 @@ public partial class Spawner : Node2D
 			spawnEnemy();
 			spawnTimer -= spawnDelay;
 			spawnCounter--;
-			GD.Print(spawnCounter);
 			if (spawnCounter <= 0){
 				SetProcess(false);
 				return;

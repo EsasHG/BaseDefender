@@ -10,6 +10,7 @@ public partial class Base : StaticBody2D
 
 		if (health <= 0){
 			//die
+			
 		}
 	} 
 }
