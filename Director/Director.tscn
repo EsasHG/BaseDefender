@@ -1,15 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://04a4yi15idop"]
+[gd_scene load_steps=5 format=3 uid="uid://04a4yi15idop"]
 
 [ext_resource type="Script" path="res://Director/Director.cs" id="1_4ubt6"]
 [ext_resource type="Script" path="res://Director/Spawner.cs" id="1_opa14"]
 [ext_resource type="PackedScene" uid="uid://ct1kgcs7jkvqt" path="res://Enemy/DefaultEnemy.tscn" id="2_28yqw"]
+[ext_resource type="PackedScene" uid="uid://dj8y6g0r48svx" path="res://Director/next_wave_Button.tscn" id="4_bev1n"]
 
-[node name="Director" type="Node2D" node_paths=PackedStringArray("spawner")]
+[node name="Director" type="Node2D" node_paths=PackedStringArray("spawner", "nextNightButton")]
+position = Vector2(-24, 12)
 script = ExtResource("1_4ubt6")
 spawner = NodePath("Spawner")
+nextNightButton = NodePath("CanvasLayer/NextWave")
 
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("1_opa14")
 enemy = ExtResource("2_28yqw")
 minDist = 500.0
 maxDist = 600.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NextWave" parent="CanvasLayer" instance=ExtResource("4_bev1n")]
+offset_right = 90.0
+offset_bottom = 31.0
+
+[connection signal="button_down" from="CanvasLayer/NextWave" to="." method="nextNight"]

@@ -42,8 +42,6 @@ func _physics_process(delta):
 
 func _attack():
 
-	Director.spawner.spawnEnemy()
-
 	ATTACKING = true
 #	var dmgSprite = Sprite2D.new()
 #	dmgSprite.texture =CanvasTexture.new()

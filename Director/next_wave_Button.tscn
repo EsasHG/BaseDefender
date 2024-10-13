@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dj8y6g0r48svx"]
+
+[node name="NextWave" type="Button"]
+z_index = 5
+offset_right = 38.0
+offset_bottom = 18.0
+text = "Next wave"
